@@ -25,32 +25,36 @@ const showAllNews = (data,category_name)=>{
   const newsContainer = document.getElementById('all-news')
   newsContainer.innerHTML =``
   data.forEach(singleNews => {
-  console.log(singleNews);
+    
+  // destracturing
+  const {image_url,title,details,author,total_view} = singleNews;
     newsContainer.innerHTML += `
     <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="${singleNews.image_url}" class="img-fluid rounded-start" alt="...">
+            <img src="${image_url}" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-8 d-flex flex-column">
             <div class="card-body">
-              <h5 class="card-title">${singleNews.title}</h5>
-              <p class="card-text">${singleNews.details.slice(0,200)} See More....</p>
+              <h5 class="card-title">${title}</h5>
+              <p class="card-text">${details.slice(0,200)} See More....</p>
             </div>
             <div class="card-footer border-0 bg-body d-flex justify-content-between">
             <div class="d-flex gap-2">
-            <img src="${singleNews.author.img}" class="img-fluid rounded-circle" height='40' width='40'>
+            <img src="${author.img}" class="img-fluid rounded-circle" height='40' width='40'>
               <div>
-                  <p>${singleNews.author.name}</p>
-                  <p>${singleNews.author.published_date}</p>
+                  <p>${author.name}</p>
+                  <p>${author.published_date}</p>
               </div>
             </div>
-            <div class="d-flex justify-content-between">
-              <i class="fas fa-eye"></i>
-              <p class="">Total Views: ${singleNews.total_view}</p>
+            <div class="d-flex align-items-center">
+            <i class="fas fa-eye"></i>
+              <p class="p-0 m-0">Total Views: ${total_view}</p>
             </div>
-            <div></div>
-            <div></div>
+            <div class="btn btn-primary p-4">
+            <i class="fas fa-arrow-right" ></i>
+            </div>
+            
             </div>
           </div>
         </div>

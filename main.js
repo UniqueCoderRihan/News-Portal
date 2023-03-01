@@ -43,13 +43,13 @@ const showAllNews = (data,category_name)=>{
             <div class="d-flex gap-2">
             <img src="${author.img}" class="img-fluid rounded-circle" height='40' width='40'>
               <div>
-                  <p>${author.name}</p>
+                  <p>${author.name?author.name:'Unknown User'}</p>
                   <p>${author.published_date}</p>
               </div>
             </div>
             <div class="d-flex align-items-center">
             <i class="fas fa-eye"></i>
-              <p class="p-0 m-0">Total Views: ${total_view}</p>
+              <p class="p-0 m-0">Total Views: ${total_view?total_view:"Not Available"}</p>
             </div>
             <div class=" p-4">
             <button class="btn btn-primary" onclick="showDetailsNews('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right"></i></button>
@@ -84,7 +84,7 @@ const displayShowDetails = newsDetails=>{
       <div class="modal-body">
         <img src="${thumbnail_url}" class="img-fluid"/>
         <p>${details}</p>
-        <p>Author: ${author?.name}</p>
+        <p>Author: ${author.name?author.name:'Unknown User'}</p>
         <p>Published Date: ${author.published_date}</p>
       </div>
       <div class="modal-footer">

@@ -27,7 +27,7 @@ const showAllNews = (data,category_name)=>{
   data.forEach(singleNews => {
     
   // destracturing
-  const {image_url,title,details,author,total_view} = singleNews;
+  const {image_url,title,details,author,total_view,_id} = singleNews;
     newsContainer.innerHTML += `
     <div class="card mb-3">
         <div class="row g-0">
@@ -51,8 +51,8 @@ const showAllNews = (data,category_name)=>{
             <i class="fas fa-eye"></i>
               <p class="p-0 m-0">Total Views: ${total_view}</p>
             </div>
-            <div class="btn btn-primary p-4">
-            <i class="fas fa-arrow-right" ></i>
+            <div class=" p-4">
+            <button class="btn btn-primary" onclick="showDetailsNews('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right"></i></button>
             </div>
             
             </div>
@@ -61,4 +61,36 @@ const showAllNews = (data,category_name)=>{
       </div>
     `
   })
+}
+// show details using news Id 
+const showDetailsNews = news_id =>{
+  let url = `https://openapi.programming-hero.com/api/news/${news_id}`
+  fetch(url).then(res=>res.json())
+  .then(data=>displayShowDetails(data.data))
+}
+
+// displayShow Details News
+const displayShowDetails = newsDetails=>{
+  const modalBodyContainer = document.getElementById('modalBody');
+  console.log(newsDetails[0]);
+  const {title,author,details,thumbnail_url} = newsDetails[0];
+  // console.log(title);
+  modalBodyContainer.innerHTML =`
+  <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">${title}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="${thumbnail_url}" class="img-fluid"/>
+        <p>${details}</p>
+        <p>Author: ${author?.name}</p>
+        <p>Published Date: ${author.published_date}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Done</button>
+      </div>
+    </div>
+  `
 }

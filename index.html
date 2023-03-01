@@ -52,23 +52,18 @@
         </div>
       </nav>
       <hr class="container" />
-      <!-- News Categories section starts-->
       <section
         class="container categories-container d-flex justify-content-between"
         id="categories-container">
     </section>
-      <!-- News Categories section ends -->
     </header>
 
   <main>
-    <!-- alert section start -->
     <section class="container mt-3">
       <div class="alert alert-dark" role="alert">
-        <span id="news_count">0 </span> News Found On <span id="catagory_name">Regular</span> Categories
+        <span id="news_count">0 </span> News Found On <span id="catagory_name"></span> Categories
       </div>
     </section>
-    <!-- alert section end -->
-    <!-- Sorting section strat -->
     <section class="container d-flex justify-content-between">
       <div class="d-flex justify-content-center align-items-center gap-2">
         <p class="p-0 mt-0">Short By</p>
@@ -82,8 +77,8 @@
         </div>
       </div>
       <div class="conatiner gap-3">
-        <button class="btn btn-outline-secondary">Todays Pick</button>
-        <button class="btn btn-outline-warning">Todays Tranding</button>
+        <button class="btn btn-outline-secondary" onclick="showPick()">Todays Pick</button>
+        <button class="btn btn-outline-warning" onclick="showTranding()">Todays Tranding</button>
       </div>
     </section>
     <section class="container all-news mt-3" id="all-news">

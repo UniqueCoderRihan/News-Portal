@@ -73,12 +73,12 @@ const showDetailsNews = news_id =>{
 const displayShowDetails = newsDetails=>{
   const modalBodyContainer = document.getElementById('modalBody');
   console.log(newsDetails[0]);
-  const {title,author,details,thumbnail_url} = newsDetails[0];
+  const {title,author,details,thumbnail_url,others_info} = newsDetails[0];
   // console.log(title);
   modalBodyContainer.innerHTML =`
   <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">${title}</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">${title}<span class="badge text-bg-danger">${others_info.is_trending?" Tranding":""}</span></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
